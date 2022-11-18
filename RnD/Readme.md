@@ -11,7 +11,7 @@ Frequency plot view of the results of the flow graph with the semi-raw signal up
 
 ![My Image](https://github.com/ScottTilley/Artemis1/blob/main/RnD/OQPSK_doppler_extract1.png)
 
-Finally I ran the flowgraph and outputed the data repeating from the file above and perform an FFT with STRF and ploted the results.  You can see the increasing Doppler from Artemis 1 just before the first TCM burn.
+Finally I ran the flowgraph and outputed the data repeating from the file above and perform an FFT with STRF and ploted the results.  You can see the increasing Doppler from Artemis 1 just before the first TCM burn.  I entered a arbitrary frequency as I believe this is 4x the frequency so some work is needed to properly interprete the data.  
 
 ![My Image](https://github.com/ScottTilley/Artemis1/blob/main/RnD/OQPSK_doppler_extract3.png)
 
