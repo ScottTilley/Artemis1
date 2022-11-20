@@ -16,6 +16,10 @@ Finally I ran the flowgraph and outputed the data repeating from the file above 
 
 ![My Image](https://github.com/ScottTilley/Artemis1/blob/main/RnD/OQPSK_doppler_extract3.png)
 
+The thing that is 4x is the baseband frequency. Say that after the multiplication block the CW carrier appears at 10 kHz in the baseband. Then this means the the centre of the OQPSK signal in the baseband was actually 2.5 kHz (10 kHz / 4). If you were tuned to 2261.5 MHz, then the exact frequency would be 2261.5 MHz + 2.5 kHz. Probably you see what I mean with this example.
+
+A nice trick with STRF is to pretend that you're recording at 4x your centre frequency (so if the SDR is actually tuned to 2216.5 MHz you would lie to STRF and tell it that you're recording at 8866 MHz). You would also lie with the nominal transmit frequency, and say that this spacecraft transmits at 8866 MHz. Then what happens is that if you tell STRF to plot Doppler traces corresponding to TLEs on top of your waterfall, the traces correctly match your data, as you have accounted for the fact that "there is a 4x zoom in the frequency".
+
 Indeed this multiply trick doesn't work very well on low SNR. There are so called "squaring losses", which in this case are proportional to SNR^4, because we are using the 4-th power (with BPSK we would use the 2-nd power, and get losses proportional to SNR^2). This means that things become much worse as the SNR decreases.
 
 To make things worse, all of what I said applies verbatim to regular BPSK or QPSK. OQPSK is an odd animal. In general the 4-th power trick will behave worse (give a CW carrier with worse SNR) than for regular QPSK. How worse depends on the pulse shape (which still I haven't measured for Orion). For MSK (which is OQPSK with half-sine pulses) the 4-th power trick wouldn't work. There wouldn't be any CW carrier. But Orion uses a different pulse shape, so we get a CW carrier. It doesn't seem to be an RRC pulse either, as recommended by CCSDS for Category A spacecraft. 
