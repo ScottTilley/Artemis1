@@ -31,3 +31,5 @@ An alternative method for measuring Doppler with weak SNR would be to correlate 
 Idle frames are interesting, because their contents are ~980 bits of 0x00, 0x01, 0x02, 0x03, etc. padding bytes. Then we have 1024 bits of LDPC parity bits which at first glance look pretty much random due to counters changing in the header (but maybe they are not so random; a look a the Tanner graph would give more info).
 
 The problem is that idle frames only happen sometimes, so I'm not so keen relying on them to measure Doppler.
+
+Final summary my 1.8m dish system doesn't obtain enough SNR for the 4x multiply trick.  Thus, the other methods discussed are being explored.
